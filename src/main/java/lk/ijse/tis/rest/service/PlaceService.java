@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public interface PlaceService {
     public ArrayList<PlaceDTO> gerAllPlaces();
-    public PlaceDTO getPlace( Integer id);
+    public PlaceDTO getPlace( Long id);
     public boolean savePlace(PlaceDTO dto);
-    public boolean deletePlace(Integer id);
+    public boolean deletePlace(Long id);
 }

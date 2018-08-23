@@ -28,13 +28,13 @@ public class placeServiceImpl  implements PlaceService{
         ArrayList<PlaceDTO> dtos=new ArrayList<>();
 
         for (Place place :places) {
-            dtos.add(new PlaceDTO(place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
+            dtos.add(new PlaceDTO(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
         }
         return dtos;
     }
 
     @Override
-    public PlaceDTO getPlace(Integer id) {
+    public PlaceDTO getPlace(Long id) {
         Place place = repository.getOne(id);
         return new PlaceDTO(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus());
     }
@@ -48,7 +48,7 @@ public class placeServiceImpl  implements PlaceService{
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public boolean deletePlace(Integer id) {
+    public boolean deletePlace(Long id) {
         repository.deleteById(id);
         return true;
     }

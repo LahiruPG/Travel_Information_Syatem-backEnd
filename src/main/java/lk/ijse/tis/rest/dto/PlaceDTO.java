@@ -6,13 +6,13 @@ import java.math.BigDecimal;
  * Created by LahiruPG on 8/23/2018.
  */
 public class PlaceDTO {
-    private Integer id;
+    private Long id;
     private String name;
     private String type;
     private String address;
     private String district;
-    private BigDecimal latitude;
-    private BigDecimal longitude;
+    private String latitude;
+    private String longitude;
     private String description;
     private String notes;
     private String status;
@@ -20,7 +20,7 @@ public class PlaceDTO {
     public PlaceDTO() {
     }
 
-    public PlaceDTO(Integer id, String name, String type, String address, String district, BigDecimal latitude, BigDecimal longitude, String description, String notes, String status) {
+    public PlaceDTO(Long id, String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -33,7 +33,7 @@ public class PlaceDTO {
         this.status = status;
     }
 
-    public PlaceDTO(String name, String type, String address, String district, BigDecimal latitude, BigDecimal longitude, String description, String notes, String status) {
+    public PlaceDTO(String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
         this.name = name;
         this.type = type;
         this.address = address;
@@ -45,11 +45,11 @@ public class PlaceDTO {
         this.status = status;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -85,19 +85,19 @@ public class PlaceDTO {
         this.district = district;
     }
 
-    public BigDecimal getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
@@ -105,7 +105,7 @@ public class PlaceDTO {
         return description;
     }
 
-    public void setDescription(String discription) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -133,9 +133,9 @@ public class PlaceDTO {
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
                 ", district='" + district + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                ", discription='" + description + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", description='" + description + '\'' +
                 ", notes='" + notes + '\'' +
                 ", status='" + status + '\'' +
                 '}';

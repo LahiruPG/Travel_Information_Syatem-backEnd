@@ -31,7 +31,7 @@ public class WebRootConfig {
         LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
         emfb.setDataSource(dataSource);
         emfb.setJpaVendorAdapter(jpaVendorAdapter);
-        emfb.setPackagesToScan("lk.ijse.mypos.rest.entity");
+        emfb.setPackagesToScan("lk.ijse.tis.rest.entity");
         return emfb;
     }
 

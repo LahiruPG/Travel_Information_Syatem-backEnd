@@ -24,18 +24,20 @@ public class PlaceController {
         return service.gerAllPlaces();
     }
 
-    @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PlaceDTO getPlace(Integer id) {
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public PlaceDTO getPlace(@PathVariable Long id) {
         return service.getPlace(id);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean savePlace(PlaceDTO dto) {
+    public boolean savePlace(@RequestBody PlaceDTO dto) {
+        System.out.println("------------"+dto);
         return service.savePlace(dto);
+      //  return true;
     }
 
-    @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean deletePlace(Integer id) {
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean deletePlace(@PathVariable Long id) {
         return service.deletePlace(id);
 
     }

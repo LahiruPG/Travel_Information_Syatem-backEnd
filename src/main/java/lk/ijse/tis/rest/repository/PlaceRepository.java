@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 /**
  * Created by LahiruPG on 8/23/2018.
  */
-public interface PlaceRepository extends JpaRepository<Place,Integer>{
+public interface PlaceRepository extends JpaRepository<Place,Long>{
 }

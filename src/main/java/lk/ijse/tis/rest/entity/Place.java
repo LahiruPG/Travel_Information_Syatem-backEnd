@@ -1,9 +1,6 @@
 package lk.ijse.tis.rest.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 /**
@@ -13,13 +10,13 @@ import java.math.BigDecimal;
 public class Place {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String name;
     private String type;
     private String address;
     private String district;
-    private BigDecimal latitude;
-    private BigDecimal longitude;
+    private String latitude;
+    private String longitude;
     private String description;
     private String notes;
     private String status;
@@ -27,7 +24,7 @@ public class Place {
     public Place() {
     }
 
-    public Place(String name, String type, String address, String district, BigDecimal latitude, BigDecimal longitude, String description, String notes, String status) {
+    public Place(String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
         this.name = name;
         this.type = type;
         this.address = address;
@@ -39,11 +36,22 @@ public class Place {
         this.status = status;
     }
 
-    public int getId() {
+    public Place(String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
+        this.type = type;
+        this.address = address;
+        this.district = district;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.description = description;
+        this.notes = notes;
+        this.status = status;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -79,19 +87,19 @@ public class Place {
         this.district = district;
     }
 
-    public BigDecimal getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
@@ -127,9 +135,9 @@ public class Place {
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
                 ", district='" + district + '\'' +
-                ", latitude=" + latitude +
-                ", longitude=" + longitude +
-                ", discription='" + description + '\'' +
+                ", latitude='" + latitude + '\'' +
+                ", longitude='" + longitude + '\'' +
+                ", description='" + description + '\'' +
                 ", notes='" + notes + '\'' +
                 ", status='" + status + '\'' +
                 '}';
