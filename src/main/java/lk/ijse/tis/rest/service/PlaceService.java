@@ -11,5 +11,6 @@ public interface PlaceService {
     public ArrayList<PlaceDTO> gerAllPlaces();
     public PlaceDTO getPlace( Long id);
     public boolean savePlace(PlaceDTO dto);
+    public boolean updatePlace(PlaceDTO dto);
     public boolean deletePlace(Long id);
 }

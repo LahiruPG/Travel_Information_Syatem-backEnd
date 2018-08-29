@@ -35,16 +35,37 @@ public class placeServiceImpl  implements PlaceService{
 
     @Override
     public PlaceDTO getPlace(Long id) {
-        Place place = repository.getOne(id);
+        Place place = repository.findById(id).get();
         return new PlaceDTO(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus());
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean savePlace(PlaceDTO place) {
-       repository.save(new Place(place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
+       repository.save(new Place(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
         return true;
     }
+
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED)
+    public boolean updatePlace(PlaceDTO place) {
+
+        repository.save(new Place(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
+         Place toUpdate = repository.getOne(place.getId());
+        toUpdate.setName(place.getName());
+        toUpdate.setAddress(place.getAddress());
+        toUpdate.setDescription(place.getDescription());
+        toUpdate.setDistrict(place.getDistrict());
+        toUpdate.setLatitude(place.getLatitude());
+        toUpdate.setLongitude(place.getLongitude());
+        toUpdate.setNotes(place.getNotes());
+        toUpdate.setStatus(place.getStatus());
+        toUpdate.setType(place.getType());
+
+        repository.save(toUpdate);
+        return true;
+    }
+
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -52,4 +73,6 @@ public class placeServiceImpl  implements PlaceService{
         repository.deleteById(id);
         return true;
     }
+
+
 }
