@@ -13,11 +13,11 @@ public class Place {
     private Long id;
     private String name;
     private String type;
+    @Column(length = 10000)
     private String address;
     private String district;
     private String latitude;
     private String longitude;
-    @Column( length = 100000 )
     private String description;
     private String notes;
     private String status;
@@ -25,8 +25,7 @@ public class Place {
     public Place() {
     }
 
-    public Place(Long id, String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
-        this.id = id;
+    public Place(String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
         this.name = name;
         this.type = type;
         this.address = address;
@@ -38,8 +37,7 @@ public class Place {
         this.status = status;
     }
 
-    public Place(String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
-        this.name = name;
+    public Place(String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
         this.type = type;
         this.address = address;
         this.district = district;

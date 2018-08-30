@@ -42,30 +42,26 @@ public class placeServiceImpl  implements PlaceService{
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean savePlace(PlaceDTO place) {
-       repository.save(new Place(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
+       repository.save(new Place(place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
         return true;
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public boolean updatePlace(PlaceDTO place) {
-
-        repository.save(new Place(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
-         Place toUpdate = repository.getOne(place.getId());
-        toUpdate.setName(place.getName());
-        toUpdate.setAddress(place.getAddress());
-        toUpdate.setDescription(place.getDescription());
-        toUpdate.setDistrict(place.getDistrict());
-        toUpdate.setLatitude(place.getLatitude());
-        toUpdate.setLongitude(place.getLongitude());
-        toUpdate.setNotes(place.getNotes());
-        toUpdate.setStatus(place.getStatus());
-        toUpdate.setType(place.getType());
+    public boolean updatePlace(PlaceDTO dto) {
+        Place toUpdate = repository.findById(dto.getId()).get();
+        toUpdate.setName(dto.getName());
+        toUpdate.setAddress(dto.getAddress());
+        toUpdate.setDescription(dto.getDescription());
+        toUpdate.setType(dto.getType());
+        toUpdate.setLatitude(dto.getLatitude());
+        toUpdate.setLongitude(dto.getLongitude());
+        toUpdate.setDistrict(dto.getDistrict());
+        toUpdate.setNotes(dto.getNotes());
+        toUpdate.setStatus(dto.getStatus());
 
         repository.save(toUpdate);
         return true;
     }
-
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
@@ -73,6 +69,4 @@ public class placeServiceImpl  implements PlaceService{
         repository.deleteById(id);
         return true;
     }
-
-
 }
