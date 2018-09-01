@@ -32,15 +32,11 @@ public class PlaceController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean savePlace(@RequestBody PlaceDTO dto) {
         return service.savePlace(dto);
-      //  return true;
     }
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean updatePlace(@RequestBody PlaceDTO dto) {
-
-
         return service.updatePlace(dto);
-        //  return true;
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
