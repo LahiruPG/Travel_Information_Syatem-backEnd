@@ -14,14 +14,14 @@ import java.util.ArrayList;
 @RestController
 @CrossOrigin
 @RequestMapping(value = "api/v1/placecategory")
-public class PlaceCategoryController implements Controller{
+public class PlaceCategoryController implements Controller<PlaceCategoryDTO,Long>{
 
     @Autowired
     private PlaceCategoryService service;
 
     @Override
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PlaceCategoryDTO get(@PathVariable long id) {
+    public PlaceCategoryDTO get(@PathVariable Long id) {
         return service.get(id);
     }
 
@@ -45,7 +45,7 @@ public class PlaceCategoryController implements Controller{
 
     @Override
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean delete(@PathVariable long id) {
+    public boolean delete(@PathVariable Long id) {
         return service.delete(id);
     }
 }

@@ -7,10 +7,10 @@ import java.util.ArrayList;
 /**
  * Created by LahiruPG on 8/31/2018.
  */
-public interface Controller {
-    public PlaceCategoryDTO get(long id);
-    public ArrayList<PlaceCategoryDTO> getAll();
-    public boolean save(PlaceCategoryDTO dto);
-    public boolean update(PlaceCategoryDTO dto);
-    public boolean delete(long id);
+public interface Controller<T,id> {
+    public T get(id id);
+    public ArrayList<T> getAll();
+    public boolean save(T dto);
+    public boolean update(T dto);
+    public boolean delete(id id);
 }
