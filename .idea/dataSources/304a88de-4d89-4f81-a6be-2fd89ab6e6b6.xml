@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="tis@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="tis">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="asd"/>
+    <schema id="4" parent="1" name="asd1"/>
+    <schema id="5" parent="1" name="bank"/>
+    <schema id="6" parent="1" name="company"/>
+    <schema id="7" parent="1" name="cotton"/>
+    <schema id="8" parent="1" name="csv_db"/>
+    <schema id="9" parent="1" name="dc1"/>
+    <schema id="10" parent="1" name="gdse44"/>
+    <schema id="11" parent="1" name="hela"/>
+    <schema id="12" parent="1" name="hibanet1"/>
+    <schema id="13" parent="1" name="hjpa"/>
+    <schema id="14" parent="1" name="hp1"/>
+    <schema id="15" parent="1" name="hp2"/>
+    <schema id="16" parent="1" name="information_schema"/>
+    <schema id="17" parent="1" name="jdbc"/>
+    <schema id="18" parent="1" name="jpa"/>
+    <schema id="19" parent="1" name="jpa2"/>
+    <schema id="20" parent="1" name="kade"/>
+    <schema id="21" parent="1" name="lc"/>
+    <schema id="22" parent="1" name="lc2"/>
+    <schema id="23" parent="1" name="lib"/>
+    <schema id="24" parent="1" name="library"/>
+    <schema id="25" parent="1" name="login"/>
+    <schema id="26" parent="1" name="login2"/>
+    <schema id="27" parent="1" name="looper_gents"/>
+    <schema id="28" parent="1" name="lpg"/>
+    <schema id="29" parent="1" name="makeorder"/>
+    <schema id="30" parent="1" name="modernpos"/>
+    <schema id="31" parent="1" name="mp"/>
+    <schema id="32" parent="1" name="mp2"/>
+    <schema id="33" parent="1" name="mypos"/>
+    <schema id="34" parent="1" name="mysql"/>
+    <schema id="35" parent="1" name="ods_db"/>
+    <schema id="36" parent="1" name="pos"/>
+    <schema id="37" parent="1" name="ppos"/>
+    <schema id="38" parent="1" name="pro"/>
+    <schema id="39" parent="1" name="project123"/>
+    <schema id="40" parent="1" name="qwe"/>
+    <schema id="41" parent="1" name="s"/>
+    <schema id="42" parent="1" name="spring"/>
+    <schema id="43" parent="1" name="student_reg"/>
+    <schema id="44" parent="1" name="tb"/>
+    <schema id="45" parent="1" name="test"/>
+    <schema id="46" parent="1" name="test123"/>
+    <schema id="47" parent="1" name="test3"/>
+    <schema id="48" parent="1" name="thogakade"/>
+    <schema id="49" parent="1" name="triggers"/>
+    <table id="50" parent="2" name="place"/>
+    <table id="51" parent="2" name="placecategory"/>
+    <table id="52" parent="2" name="user"/>
+    <column id="53" parent="50" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="54" parent="50" name="address">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="55" parent="50" name="description">
+      <Position>3</Position>
+      <DataType>longtext|0</DataType>
+    </column>
+    <column id="56" parent="50" name="district">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="57" parent="50" name="latitude">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="58" parent="50" name="longitude">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="59" parent="50" name="name">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="60" parent="50" name="notes">
+      <Position>8</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="61" parent="50" name="status">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="62" parent="50" name="type">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="63" parent="50" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="64" parent="51" name="id">
+      <Position>1</Position>
+      <DataType>bigint(20)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="65" parent="51" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="66" parent="51" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="52" name="email">
+      <Position>1</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="68" parent="52" name="password">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="69" parent="52" name="type">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="70" parent="52" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>email</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

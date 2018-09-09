@@ -7,7 +7,7 @@ import lk.ijse.tis.rest.dto.UserDTO;
  */
 public interface UserService {
 
-    public UserDTO get(String id);
+    public UserDTO get(UserDTO dto);
     public boolean save(UserDTO dto);
     public boolean update(UserDTO dto);
     public boolean delete(Long id);

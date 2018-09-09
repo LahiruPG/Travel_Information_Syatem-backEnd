@@ -9,26 +9,36 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.NoSuchElementException;
+
 /**
  * Created by LahiruPG on 9/2/2018.
  */
 @Service
-@Transactional(propagation = Propagation.SUPPORTS,readOnly = true)
+@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository repository;
 
     @Override
-    public UserDTO get(String id) {
-        User user = repository.findById(id).get();
-        return new UserDTO(user.getEmail(),user.getPassword());
+    public UserDTO get(UserDTO dto) {
+        try {
+            User user = repository.findById(dto.getEmail()).get();
+            if (dto.getPassword().matches(user.getPassword())) {
+                return new UserDTO(user.getEmail(), null, user.getName(), user.getType());
+            }else {
+                return new UserDTO();
+            }
+        } catch (NoSuchElementException e) {
+            return new UserDTO();
+        }
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean save(UserDTO dto) {
-        repository.save(new User(dto.getEmail(),dto.getPassword()));
+        repository.save(new User(dto.getEmail(), dto.getPassword(), dto.getName(), dto.getType()));
         return true;
     }
 
