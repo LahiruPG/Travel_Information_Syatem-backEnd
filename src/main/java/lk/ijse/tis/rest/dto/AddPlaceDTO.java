@@ -1,33 +1,28 @@
-package lk.ijse.tis.rest.entity;
+package lk.ijse.tis.rest.dto;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by LahiruPG on 8/23/2018.
+ * Created by LahiruPG on 9/15/2018.
  */
-@Entity
-public class Place {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class AddPlaceDTO {
     private Long id;
     private String name;
     private String type;
-    @Column(length = 10000)
     private String address;
     private String district;
     private String latitude;
     private String longitude;
     private String description;
     private String notes;
+    private ArrayList<String> fileList;
     private String status;
 
-    public Place() {
+    public AddPlaceDTO() {
     }
 
-        public Place(String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
+    public AddPlaceDTO(Long id, String name, String type, String address, String district, String latitude, String longitude, String description, String notes, ArrayList<String> fileList, String status) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.address = address;
@@ -36,17 +31,7 @@ public class Place {
         this.longitude = longitude;
         this.description = description;
         this.notes = notes;
-        this.status = status;
-    }
-
-    public Place(String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
-        this.type = type;
-        this.address = address;
-        this.district = district;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.description = description;
-        this.notes = notes;
+        this.fileList = fileList;
         this.status = status;
     }
 
@@ -122,6 +107,14 @@ public class Place {
         this.notes = notes;
     }
 
+    public ArrayList<String> getFileList() {
+        return fileList;
+    }
+
+    public void setFileList(ArrayList<String> fileList) {
+        this.fileList = fileList;
+    }
+
     public String getStatus() {
         return status;
     }
@@ -132,7 +125,7 @@ public class Place {
 
     @Override
     public String toString() {
-        return "Place{" +
+        return "AddPlaceDTO{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
@@ -142,6 +135,7 @@ public class Place {
                 ", longitude='" + longitude + '\'' +
                 ", description='" + description + '\'' +
                 ", notes='" + notes + '\'' +
+                ", fileList=" + fileList +
                 ", status='" + status + '\'' +
                 '}';
     }

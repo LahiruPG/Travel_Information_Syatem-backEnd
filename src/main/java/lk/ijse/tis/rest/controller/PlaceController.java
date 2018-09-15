@@ -5,7 +5,12 @@ import lk.ijse.tis.rest.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -42,6 +47,27 @@ public class PlaceController {
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean deletePlace(@PathVariable Long id) {
         return service.deletePlace(id);
+    }
 
+    @RequestMapping(value = "/images", method = RequestMethod.POST)
+    public String uploadFiles(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
+        System.out.println("Executed.");
+        String fileUrl = "";
+
+        try {
+            String filePath = request.getServletContext().getRealPath("/");
+
+            System.out.println(filePath);
+
+            File f1 = new File(filePath + "/uploads/" + file.getOriginalFilename());
+            file.transferTo(f1);
+
+            fileUrl = f1.getAbsolutePath();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return fileUrl;
     }
 }
