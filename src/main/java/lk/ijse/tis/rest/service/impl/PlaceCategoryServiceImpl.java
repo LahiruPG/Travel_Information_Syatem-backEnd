@@ -41,12 +41,14 @@ public class PlaceCategoryServiceImpl implements PlaceCategoryService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean save(PlaceCategoryDTO dto) {
         repository.save(new PlaceCategory(dto.getName()));
         return true;
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean update(PlaceCategoryDTO dto) {
         PlaceCategory one = repository.getOne(dto.getId());
         one.setName(dto.getName());
@@ -55,6 +57,7 @@ public class PlaceCategoryServiceImpl implements PlaceCategoryService {
     }
 
     @Override
+    @Transactional(propagation = Propagation.REQUIRED)
     public boolean delete(Long id) {
         repository.deleteById(id);
         return true;

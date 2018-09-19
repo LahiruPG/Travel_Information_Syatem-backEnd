@@ -11,40 +11,42 @@ public class PlaceDTO {
     private String name;
     private String type;
     private String address;
-    private String district;
-    private String latitude;
-    private String longitude;
     private String description;
+    private String district;
+    private String town;
+    private String MapLocation;
     private String notes;
     private String status;
 
     public PlaceDTO() {
     }
 
-    public PlaceDTO(Long id, String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
-        this.id = id;
+    public PlaceDTO(String name, String type, String address, String description, String district, String town, String mapLocation, String notes, String status) {
         this.name = name;
         this.type = type;
         this.address = address;
-        this.district = district;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.description = description;
+        this.district = district;
+        this.town = town;
+        MapLocation = mapLocation;
         this.notes = notes;
         this.status = status;
     }
 
-    public PlaceDTO(String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
+    public PlaceDTO(Long id, String name, String type, String address, String description, String district, String town, String mapLocation, String notes, String status) {
+        this.id = id;
         this.name = name;
         this.type = type;
         this.address = address;
-        this.district = district;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.description = description;
+        this.district = district;
+        this.town = town;
+        MapLocation = mapLocation;
         this.notes = notes;
         this.status = status;
     }
+
+
 
     public Long getId() {
         return id;
@@ -78,6 +80,14 @@ public class PlaceDTO {
         this.address = address;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getDistrict() {
         return district;
     }
@@ -86,28 +96,20 @@ public class PlaceDTO {
         this.district = district;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public String getTown() {
+        return town;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public void setTown(String town) {
+        this.town = town;
     }
 
-    public String getLongitude() {
-        return longitude;
+    public String getMapLocation() {
+        return MapLocation;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setMapLocation(String mapLocation) {
+        MapLocation = mapLocation;
     }
 
     public String getNotes() {
@@ -133,10 +135,10 @@ public class PlaceDTO {
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
-                ", district='" + district + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
                 ", description='" + description + '\'' +
+                ", district='" + district + '\'' +
+                ", town='" + town + '\'' +
+                ", MapLocation='" + MapLocation + '\'' +
                 ", notes='" + notes + '\'' +
                 ", status='" + status + '\'' +
                 '}';

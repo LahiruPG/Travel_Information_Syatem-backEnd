@@ -1,9 +1,6 @@
 package lk.ijse.tis.rest.entity;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by LahiruPG on 8/23/2018.
@@ -15,37 +12,40 @@ public class Place {
     private Long id;
     private String name;
     private String type;
-    @Column(length = 10000)
     private String address;
-    private String district;
-    private String latitude;
-    private String longitude;
     private String description;
+    private String district;
+    private String town;
+    @Column(length = 1000)
+    private String MapLocation;
+    @Column(length = 10000)
     private String notes;
     private String status;
 
     public Place() {
     }
 
-        public Place(String name, String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
+    public Place(String name, String type, String address, String description, String district, String town, String mapLocation, String notes, String status) {
         this.name = name;
         this.type = type;
         this.address = address;
-        this.district = district;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.description = description;
+        this.district = district;
+        this.town = town;
+        MapLocation = mapLocation;
         this.notes = notes;
         this.status = status;
     }
 
-    public Place(String type, String address, String district, String latitude, String longitude, String description, String notes, String status) {
+    public Place(Long id, String name, String type, String address, String description, String district, String town, String mapLocation, String notes, String status) {
+        this.id = id;
+        this.name = name;
         this.type = type;
         this.address = address;
-        this.district = district;
-        this.latitude = latitude;
-        this.longitude = longitude;
         this.description = description;
+        this.district = district;
+        this.town = town;
+        MapLocation = mapLocation;
         this.notes = notes;
         this.status = status;
     }
@@ -82,6 +82,14 @@ public class Place {
         this.address = address;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getDistrict() {
         return district;
     }
@@ -90,28 +98,20 @@ public class Place {
         this.district = district;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public String getTown() {
+        return town;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public void setTown(String town) {
+        this.town = town;
     }
 
-    public String getLongitude() {
-        return longitude;
+    public String getMapLocation() {
+        return MapLocation;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setMapLocation(String mapLocation) {
+        MapLocation = mapLocation;
     }
 
     public String getNotes() {
@@ -137,10 +137,10 @@ public class Place {
                 ", name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 ", address='" + address + '\'' +
-                ", district='" + district + '\'' +
-                ", latitude='" + latitude + '\'' +
-                ", longitude='" + longitude + '\'' +
                 ", description='" + description + '\'' +
+                ", district='" + district + '\'' +
+                ", town='" + town + '\'' +
+                ", MapLocation='" + MapLocation + '\'' +
                 ", notes='" + notes + '\'' +
                 ", status='" + status + '\'' +
                 '}';

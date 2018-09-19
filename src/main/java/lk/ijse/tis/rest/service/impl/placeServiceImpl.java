@@ -28,7 +28,7 @@ public class placeServiceImpl  implements PlaceService{
         ArrayList<PlaceDTO> dtos=new ArrayList<>();
 
         for (Place place :places) {
-            dtos.add(new PlaceDTO(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
+            dtos.add(new PlaceDTO(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDescription(),place.getDistrict(), place.getTown(),place.getMapLocation(),place.getNotes(),place.getStatus()));
         }
         return dtos;
     }
@@ -36,26 +36,27 @@ public class placeServiceImpl  implements PlaceService{
     @Override
     public PlaceDTO getPlace(Long id) {
         Place place = repository.findById(id).get();
-        return new PlaceDTO(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus());
+        return new PlaceDTO(place.getId(),place.getName(),place.getType(),place.getAddress(),place.getDescription(),place.getDistrict(), place.getTown(),place.getMapLocation(),place.getNotes(),place.getStatus());
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean savePlace(PlaceDTO place) {
-       repository.save(new Place(place.getName(),place.getType(),place.getAddress(),place.getDistrict(),place.getLatitude(),place.getLongitude(),place.getDescription(),place.getNotes(),place.getStatus()));
+       repository.save(new Place(place.getName(),place.getType(),place.getAddress(),place.getDescription(),place.getDistrict(), place.getTown(),place.getMapLocation(),place.getNotes(),place.getStatus()));
         return true;
     }
 
     @Override
     public boolean updatePlace(PlaceDTO dto) {
         Place toUpdate = repository.findById(dto.getId()).get();
+
         toUpdate.setName(dto.getName());
+        toUpdate.setType(dto.getType());
         toUpdate.setAddress(dto.getAddress());
         toUpdate.setDescription(dto.getDescription());
-        toUpdate.setType(dto.getType());
-        toUpdate.setLatitude(dto.getLatitude());
-        toUpdate.setLongitude(dto.getLongitude());
         toUpdate.setDistrict(dto.getDistrict());
+        toUpdate.setTown(dto.getTown());
+        toUpdate.setMapLocation(dto.getMapLocation());
         toUpdate.setNotes(dto.getNotes());
         toUpdate.setStatus(dto.getStatus());
 

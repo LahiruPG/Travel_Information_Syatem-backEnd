@@ -14,14 +14,14 @@ import java.util.ArrayList;
 @RestController
 @CrossOrigin
 @RequestMapping(value = "api/v1/placecategory")
-public class PlaceCategoryController implements Controller<PlaceCategoryDTO,Long>{
+public class PlaceCategoryController implements SuperController<PlaceCategoryDTO,Long>{
 
     @Autowired
     private PlaceCategoryService service;
 
     @Override
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PlaceCategoryDTO get(@PathVariable Long id) {
+    public PlaceCategoryDTO find(@PathVariable Long id) {
         return service.get(id);
     }
 
