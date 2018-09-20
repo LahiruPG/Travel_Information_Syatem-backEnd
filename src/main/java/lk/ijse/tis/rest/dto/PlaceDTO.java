@@ -17,6 +17,9 @@ public class PlaceDTO {
     private String MapLocation;
     private String notes;
     private String status;
+    private ArrayList<PlaceImageDTO> imageUrl;
+    private ArrayList<PlaceReviewDTO> review;
+
 
     public PlaceDTO() {
     }
@@ -45,8 +48,6 @@ public class PlaceDTO {
         this.notes = notes;
         this.status = status;
     }
-
-
 
     public Long getId() {
         return id;
@@ -128,6 +129,22 @@ public class PlaceDTO {
         this.status = status;
     }
 
+    public ArrayList<PlaceImageDTO> getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(ArrayList<PlaceImageDTO> imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public ArrayList<PlaceReviewDTO> getReview() {
+        return review;
+    }
+
+    public void setReview(ArrayList<PlaceReviewDTO> review) {
+        this.review = review;
+    }
+
     @Override
     public String toString() {
         return "PlaceDTO{" +
@@ -141,6 +158,8 @@ public class PlaceDTO {
                 ", MapLocation='" + MapLocation + '\'' +
                 ", notes='" + notes + '\'' +
                 ", status='" + status + '\'' +
+                ", imageUrl=" + imageUrl +
+                ", review=" + review +
                 '}';
     }
 }

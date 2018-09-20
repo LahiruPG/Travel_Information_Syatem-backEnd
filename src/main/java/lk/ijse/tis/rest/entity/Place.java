@@ -13,12 +13,12 @@ public class Place {
     private String name;
     private String type;
     private String address;
+    @Column(length = 10000)
     private String description;
     private String district;
     private String town;
     @Column(length = 1000)
     private String MapLocation;
-    @Column(length = 10000)
     private String notes;
     private String status;
 

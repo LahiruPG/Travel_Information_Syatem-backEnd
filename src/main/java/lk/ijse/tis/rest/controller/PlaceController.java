@@ -40,6 +40,7 @@ public class PlaceController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean updatePlace(@RequestBody PlaceDTO dto) {
+        System.out.println("---------------Put place Service");
         return service.updatePlace(dto);
     }
 

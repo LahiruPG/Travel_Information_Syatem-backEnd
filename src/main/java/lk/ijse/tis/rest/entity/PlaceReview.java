@@ -1,6 +1,9 @@
 package lk.ijse.tis.rest.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * Created by LahiruPG on 9/13/2018.
