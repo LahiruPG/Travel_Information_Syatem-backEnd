@@ -17,6 +17,12 @@ public class User {
     public User() {
     }
 
+    public User(String email, String name, String type) {
+        this.email = email;
+        this.name = name;
+        this.type = type;
+    }
+
     public User(String email, String password, String name, String type) {
         this.email = email;
         this.password = password;

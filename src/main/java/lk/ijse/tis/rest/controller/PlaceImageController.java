@@ -21,7 +21,7 @@ public class PlaceImageController implements SuperController<PlaceImageDTO, Long
 
     @Override
     @GetMapping(value = "/id", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PlaceImageDTO find(@PathVariable Long id) {
+    public PlaceImageDTO find(@PathVariable("id") Long id) {
         return service.find(id);
     }
 
@@ -45,7 +45,7 @@ public class PlaceImageController implements SuperController<PlaceImageDTO, Long
 
     @Override
     @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean delete(@PathVariable Long id) {
+    public boolean delete(@PathVariable("id") Long id) {
         return service.delete(id);
     }
 }

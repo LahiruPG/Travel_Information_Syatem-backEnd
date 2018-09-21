@@ -1,9 +1,6 @@
 package lk.ijse.tis.rest.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by LahiruPG on 9/13/2018.
@@ -16,6 +13,7 @@ public class PlaceReview {
     private Long placeId;
     private String userEmail;
     private int starCount;
+    @Column(length = 10000)
     private String review;
 
     public PlaceReview() {

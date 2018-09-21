@@ -1,5 +1,7 @@
 package lk.ijse.tis.rest.dto;
 
+import java.util.ArrayList;
+
 /**
  * Created by LahiruPG on 9/19/2018.
  */
@@ -9,6 +11,7 @@ public class PlaceReviewDTO {
     private String userEmail;
     private int starCount;
     private String review;
+    private UserDTO user;
 
     public PlaceReviewDTO() {
     }
@@ -59,6 +62,14 @@ public class PlaceReviewDTO {
 
     public void setReview(String review) {
         this.review = review;
+    }
+
+    public UserDTO getUser() {
+        return user;
+    }
+
+    public void setUser(UserDTO user) {
+        this.user = user;
     }
 
     @Override

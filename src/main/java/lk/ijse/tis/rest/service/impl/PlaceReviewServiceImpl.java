@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by LahiruPG on 9/19/2018.
@@ -49,7 +50,12 @@ public class PlaceReviewServiceImpl implements PlaceReviewService {
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
     public boolean update(PlaceReviewDTO dto) {
-        return false;
+        PlaceReview pr = repository.findById(dto.getId()).get();
+        pr.setPlaceId(dto.getPlaceId());
+        pr.setStarCount(dto.getStarCount());
+        pr.setReview(dto.getReview());
+        repository.save(pr);
+        return true;
     }
 
     @Override

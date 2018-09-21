@@ -29,7 +29,7 @@ public class PlaceController {
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PlaceDTO getPlace(@PathVariable Long id) {
+    public PlaceDTO getPlace(@PathVariable("id") Long id) {
         return service.getPlace(id);
     }
 
@@ -40,12 +40,11 @@ public class PlaceController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean updatePlace(@RequestBody PlaceDTO dto) {
-        System.out.println("---------------Put place Service");
         return service.updatePlace(dto);
     }
 
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean deletePlace(@PathVariable Long id) {
+    public boolean deletePlace(@PathVariable("id") Long id) {
         return service.deletePlace(id);
     }
 
@@ -62,7 +61,7 @@ public class PlaceController {
             File f1 = new File(filePath + "/uploads/" + file.getOriginalFilename());
             file.transferTo(f1);
 
-            fileUrl = f1.getAbsolutePath();
+            fileUrl = f1.getAbsolutePath() + "/" + file.getOriginalFilename();
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -12,6 +12,12 @@ public class UserDTO {
     public UserDTO() {
     }
 
+    public UserDTO(String email, String name, String type) {
+        this.email = email;
+        this.name = name;
+        this.type = type;
+    }
+
     public UserDTO(String email, String password, String name, String type) {
         this.email = email;
         this.password = password;

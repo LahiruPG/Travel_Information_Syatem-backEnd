@@ -21,7 +21,7 @@ public class PlaceCategoryController implements SuperController<PlaceCategoryDTO
 
     @Override
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PlaceCategoryDTO find(@PathVariable Long id) {
+    public PlaceCategoryDTO find(@PathVariable("id") Long id) {
         return service.get(id);
     }
 
@@ -45,7 +45,7 @@ public class PlaceCategoryController implements SuperController<PlaceCategoryDTO
 
     @Override
     @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean delete(@PathVariable Long id) {
+    public boolean delete(@PathVariable("id") Long id) {
         return service.delete(id);
     }
 }

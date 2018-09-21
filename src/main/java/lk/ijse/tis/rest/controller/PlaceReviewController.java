@@ -20,8 +20,8 @@ public class PlaceReviewController implements SuperController<PlaceReviewDTO,Lon
     private PlaceReviewService service;
 
     @Override
-    @GetMapping(value = "/id", produces = MediaType.APPLICATION_JSON_VALUE)
-    public PlaceReviewDTO find(@PathVariable Long id) {
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public PlaceReviewDTO find(@PathVariable("id") Long id) {
         return service.find(id);
     }
 
@@ -44,8 +44,8 @@ public class PlaceReviewController implements SuperController<PlaceReviewDTO,Lon
     }
 
     @Override
-    @DeleteMapping(value = "/id",produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean delete(Long id) {
+    @DeleteMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean delete(@PathVariable("id") Long id) {
         return service.delete(id);
     }
 }
