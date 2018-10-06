@@ -1,11 +1,14 @@
 package lk.ijse.tis.rest.service.impl;
 
 import lk.ijse.tis.rest.dto.PlaceDTO;
+import lk.ijse.tis.rest.dto.PlaceImageDTO;
 import lk.ijse.tis.rest.dto.PlaceReviewDTO;
 import lk.ijse.tis.rest.dto.UserDTO;
 import lk.ijse.tis.rest.entity.Place;
+import lk.ijse.tis.rest.entity.PlaceImage;
 import lk.ijse.tis.rest.entity.PlaceReview;
 import lk.ijse.tis.rest.entity.User;
+import lk.ijse.tis.rest.repository.PlaceImageRepository;
 import lk.ijse.tis.rest.repository.PlaceRepository;
 import lk.ijse.tis.rest.repository.PlaceReviewRepository;
 import lk.ijse.tis.rest.repository.UserRepository;
@@ -14,7 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +40,9 @@ public class placeServiceImpl implements PlaceService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PlaceImageRepository imageRepository;
 
     @Override
     public ArrayList<PlaceDTO> gerAllPlaces() {
@@ -62,6 +72,14 @@ public class placeServiceImpl implements PlaceService {
             reviewDTOS.add(prDto);
         }
         dto.setReview(reviewDTOS);
+
+        ArrayList<PlaceImage> pil = imageRepository.findByPlaceId(id);
+        ArrayList<PlaceImageDTO> placeImageDTOS = new ArrayList<>();
+        for (PlaceImage pi : pil) {
+            placeImageDTOS.add(new PlaceImageDTO(pi.getId(),pi.getPlaceId(),pi.getUrl()));
+        }
+        dto.setImageUrl(placeImageDTOS);
+
         return dto;
     }
 
@@ -95,5 +113,18 @@ public class placeServiceImpl implements PlaceService {
     public boolean deletePlace(Long id) {
         repository.deleteById(id);
         return true;
+    }
+    @Override
+    public String uploadImage(MultipartFile file, HttpServletRequest request){
+        String fileUrl = "";
+        try {
+            String filePath = request.getServletContext().getRealPath("/");
+            File f1 = new File(filePath + "/uploads/" + file.getOriginalFilename());
+            file.transferTo(f1);
+            fileUrl ="http://127.0.0.1:8887/" + file.getOriginalFilename();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fileUrl;
     }
 }

@@ -57,4 +57,14 @@ public class PlaceImageServiceImpl implements PlaceImagesService {
         repository.deleteById(id);
         return true;
     }
+
+    @Override
+    public boolean saveList(ArrayList<PlaceImageDTO> dto) {
+        ArrayList<PlaceImage> pis = new ArrayList<>();
+        for (PlaceImageDTO p : dto) {
+            pis.add(new PlaceImage(p.getPlaceId(),p.getUrl()));
+        }
+        repository.saveAll(pis);
+        return true;
+    }
 }

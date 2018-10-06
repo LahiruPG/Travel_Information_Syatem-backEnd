@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,7 +21,7 @@ public class PlaceImageController implements SuperController<PlaceImageDTO, Long
     private PlaceImagesService service;
 
     @Override
-    @GetMapping(value = "/id", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public PlaceImageDTO find(@PathVariable("id") Long id) {
         return service.find(id);
     }
@@ -44,8 +45,13 @@ public class PlaceImageController implements SuperController<PlaceImageDTO, Long
     }
 
     @Override
-    @DeleteMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public boolean delete(@PathVariable("id") Long id) {
         return service.delete(id);
+    }
+
+    @PostMapping(value = "list", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public boolean saveList(@RequestBody ArrayList<PlaceImageDTO> dto) {
+        return service.saveList(dto);
     }
 }

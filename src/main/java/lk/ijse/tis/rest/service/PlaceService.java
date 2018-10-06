@@ -1,7 +1,9 @@
 package lk.ijse.tis.rest.service;
 
 import lk.ijse.tis.rest.dto.PlaceDTO;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 
 /**
@@ -13,4 +15,5 @@ public interface PlaceService {
     public boolean savePlace(PlaceDTO dto);
     public boolean updatePlace(PlaceDTO dto);
     public boolean deletePlace(Long id);
+    public String uploadImage(MultipartFile file, HttpServletRequest request);
 }

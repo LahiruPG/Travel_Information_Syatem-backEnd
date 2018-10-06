@@ -1,9 +1,6 @@
 package lk.ijse.tis.rest.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by LahiruPG on 9/19/2018.
@@ -14,6 +11,7 @@ public class PlaceImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long placeId;
+    @Column(length = 1000)
     private String url;
 
     public PlaceImage() {

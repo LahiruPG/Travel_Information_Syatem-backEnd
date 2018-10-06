@@ -20,7 +20,7 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @PostMapping(value = "/user", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/login", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public UserDTO get(@RequestBody UserDTO dto) {
         return service.get(dto);
 

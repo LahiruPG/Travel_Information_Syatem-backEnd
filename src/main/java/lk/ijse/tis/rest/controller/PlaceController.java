@@ -1,6 +1,7 @@
 package lk.ijse.tis.rest.controller;
 
 import lk.ijse.tis.rest.dto.PlaceDTO;
+import lk.ijse.tis.rest.dto.PlaceImageDTO;
 import lk.ijse.tis.rest.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -8,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -48,25 +47,10 @@ public class PlaceController {
         return service.deletePlace(id);
     }
 
-    @RequestMapping(value = "/images", method = RequestMethod.POST)
-    public String uploadFiles(@RequestParam("file") MultipartFile file, HttpServletRequest request) {
-        System.out.println("Executed.");
-        String fileUrl = "";
-
-        try {
-            String filePath = request.getServletContext().getRealPath("/");
-
-            System.out.println(filePath);
-
-            File f1 = new File(filePath + "/uploads/" + file.getOriginalFilename());
-            file.transferTo(f1);
-
-            fileUrl = f1.getAbsolutePath() + "/" + file.getOriginalFilename();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return fileUrl;
+    //    @RequestMapping(value = "/images", method = RequestMethod.POST)@RequestParam
+    @PostMapping(value = "/images", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public PlaceImageDTO uploadFiles(@RequestPart("file") MultipartFile file, HttpServletRequest request) {
+        String url = service.uploadImage(file, request);
+        return new PlaceImageDTO(null,null,url);
     }
 }
